@@ -4,45 +4,60 @@ class Solution(object):
         :type nums: List[int]
         :rtype: None Do not return anything, modify nums in-place instead.
         """
+        # using mergesort
+        # def merge(arr, L,M,R):
 
-        def merge(arr, L,M,R):
+        #     left = arr[L:M+1]
+        #     right = arr[M+1:R+1]
 
-            left = arr[L:M+1]
-            right = arr[M+1:R+1]
+        #     i = L
+        #     j,k = 0,0
 
-            i = L
-            j,k = 0,0
+        #     while j<len(left) and k< len(right):
 
-            while j<len(left) and k< len(right):
+        #         if left[j] <= right[k]:
+        #             arr[i] = left[j]
+        #             j+=1
+        #         else:
+        #             arr[i] = right[k]
+        #             k+=1
+        #         i+=1
+        #     while j < len(left):
+        #         arr[i] = left[j]
+        #         j+=1
+        #         i+=1
+        #     while k < len(right):
+        #         arr[i] = right[k]
+        #         k+=1
+        #         i+=1 
+        #     return 
 
-                if left[j] <= right[k]:
-                    arr[i] = left[j]
-                    j+=1
-                else:
-                    arr[i] = right[k]
-                    k+=1
-                i+=1
-            while j < len(left):
-                arr[i] = left[j]
-                j+=1
-                i+=1
-            while k < len(right):
-                arr[i] = right[k]
-                k+=1
-                i+=1 
-            return 
-
-        def mergeSort(arr, l,r):
-            if l == r:
-                return arr
+        # def mergeSort(arr, l,r):
+        #     if l == r:
+        #         return arr
             
-            m = (l+r)//2
+        #     m = (l+r)//2
 
-            mergeSort(arr, l, m)
-            mergeSort(arr,m+1,r)
-            merge(arr, l, m, r)
+        #     mergeSort(arr, l, m)
+        #     mergeSort(arr,m+1,r)
+        #     merge(arr, l, m, r)
 
-            return arr
+        #     return arr
 
-        return mergeSort(nums,0, len(nums)-1)
+        # return mergeSort(nums,0, len(nums)-1)
+        low, mid, high = 0,0,len(nums)-1
+
+        while mid<=high:
+            if nums[mid] == 0:
+                nums[low], nums[mid] = nums[mid], nums[low]
+                low+=1
+                mid+=1
+            elif nums[mid] == 1:
+                mid+=1
+            else:
+                nums[mid], nums[high] = nums[high], nums[mid]
+                high-=1
+        
+
+
         
