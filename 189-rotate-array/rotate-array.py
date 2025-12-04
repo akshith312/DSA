@@ -5,23 +5,26 @@ class Solution(object):
         :type k: int
         :rtype: None Do not return anything, modify nums in-place instead.
         """
-        #extra space
-        # n = len(nums)
-        # res = [0] * n
+        k = k%len(nums)
 
-        # for i in range(n):
-        #     res[(i+k)%n] = nums[i]
-        # nums[:] = res
-        n = len(nums)
-        k = k%n
+        l = 0
+        r = len(nums) -1
 
-        def rev(l, r):
-            while l < r:
-                nums[l], nums[r] = nums[r], nums[l]
-                l+=1
-                r-=1
-        rev(0,n-1)
-        rev(0,k-1)
-        rev(k,n-1)
+        while l<r:
+            nums[l], nums[r] = nums[r], nums[l]
+            l+=1
+            r-=1
         
-        
+        l = 0 
+        r = k-1
+        while l<r:
+            nums[l], nums[r] = nums[r], nums[l]
+            l+=1
+            r-=1
+        l = k
+        r =len(nums)-1
+        while l<r:
+            nums[l], nums[r] = nums[r], nums[l]
+            l+=1
+            r-=1
+        return nums
