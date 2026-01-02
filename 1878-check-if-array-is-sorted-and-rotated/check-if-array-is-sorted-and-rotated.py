@@ -4,10 +4,16 @@ class Solution(object):
         :type nums: List[int]
         :rtype: bool
         """
-        ctr = 0
-        for i in range(len(nums)):
-            if nums[i] > nums[(i + 1) % len(nums)]:
-                ctr +=1
-        return ctr <=1
-                
+        n = len(nums)
+        count  = 1
+        for i in range(1, 2 * n):
+            if nums[(i-1)%n] <= nums[i%n]:
+                count += 1
+            else:
+                count = 1
+            if count == n:
+                return True
+        return n == 1
+
+
         
