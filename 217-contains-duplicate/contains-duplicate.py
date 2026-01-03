@@ -4,15 +4,18 @@ class Solution(object):
         :type nums: List[int]
         :rtype: bool
         """
-        #Submission
-        n = len(nums)
+        # Brute Force
+        # for i in range(len(nums)):
+        #     ctr = 0
+        #     for j in range(i+1, len(nums)):
+        #         if nums[i] == nums[j]:
+        #             return True
+        # return False
+        hashmap = {}
 
-        new = set(nums)
-
-        m = len(new)
-
-        if n == m:
-            return False
-        
-        return True
+        for i in range(len(nums)):
+            if nums[i] in hashmap:
+                return True
+            hashmap[nums[i]] = 1 + hashmap.get(nums[i],0)
+        return False
         
