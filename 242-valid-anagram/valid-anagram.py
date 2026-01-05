@@ -5,22 +5,18 @@ class Solution(object):
         :type t: str
         :rtype: bool
         """
-        # n = len(s)
-        # m = len(t)
+        map1 = {}
+        map2 = {}
 
-        # if len(s)!=len(t):
-        #     return False
+        if len(s)!=len(t):
+            return False
         
-        # countS, countT = {}, {}
-
-        # for i in range(n):
-        #     countS[s[i]] = 1 + countS.get(s[i],0) #get(val,defVal) ensures if no occurence it is created and then read
-        #     countT[t[i]] = 1 + countT.get(t[i],0)
+        for i in range(len(s)):
+            map1[s[i]] = 1 + map1.get(s[i],0)
+            map2[t[i]] = 1 + map2.get(t[i],0)
         
-        # for c in countS:
-        #     if countS[c] != countT.get(c,0):
-        #         return False
-        
-        # return True
-
-        return sorted(s) == sorted(t)
+        for c in map1:
+            if map1[c] != map2.get(c,0):
+                return False
+        return True
+       
