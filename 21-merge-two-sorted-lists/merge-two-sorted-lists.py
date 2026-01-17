@@ -10,20 +10,24 @@ class Solution(object):
         :type list2: Optional[ListNode]
         :rtype: Optional[ListNode]
         """
-        temp = ListNode()
-        newhead = temp
+        
+        merged = ListNode()
+        temp = merged
 
         while list1 and list2:
             if list1.val < list2.val:
-                newhead.next = list1
-                newhead = list1
-                list1 = list1.next        
+                temp.next = list1
+                list1 = list1.next
             else:
-                newhead.next = list2
-                newhead = list2
+                temp.next = list2
                 list2 = list2.next
-        
-        newhead.next = list1 if list1 else list2
-        return temp.next
-        
-        
+            temp = temp.next
+        if list1:
+            temp.next = list1
+        else:
+            temp.next = list2
+        return merged.next
+            
+
+
+       
