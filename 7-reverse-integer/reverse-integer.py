@@ -6,14 +6,12 @@ class Solution(object):
         """
         
         num = 0
-        sign = -1 if x<0 else 1
+        sign = -1 if x < 0 else 1
         x = abs(x)
-        while x!=0:
-            rem = x%10
+        while x > 0:
+            rem = x % 10
+            num = num*10 + rem 
             x = x//10
-            num = (num*10) + rem
-            if num < -2**31 or num > 2**31 -1:
+            if num<-2**31 or num >2**31:
                 return 0
-        return (num*sign) 
-
-        
+        return(num*sign) 
