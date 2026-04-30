@@ -8,7 +8,7 @@ class Solution(object):
         map1 = {}
         map2 = {}
 
-        if len(s)!=len(t):
+        if len(s) != len(t):
             return False
         
         for i in range(len(s)):
@@ -19,4 +19,5 @@ class Solution(object):
             if map1[c] != map2.get(c,0):
                 return False
         return True
+            
        
