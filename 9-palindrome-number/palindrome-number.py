@@ -4,14 +4,13 @@ class Solution(object):
         :type x: int
         :rtype: bool
         """
-        rnum = 0
         y = x
-        while x>0:
-            rem = x%10
-            rnum = (rnum*10) + rem
-            x = x//10
-        
-        if rnum == y:
+        revnum = 0
+        while x > 0:
+            rem = x % 10
+            revnum = revnum*10 + rem
+            x = x // 10
+        if y == revnum:
             return True
         return False
-        
+
