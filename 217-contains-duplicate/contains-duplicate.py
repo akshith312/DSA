@@ -7,9 +7,7 @@ class Solution(object):
         hashmap = {}
 
         for i in range(len(nums)):
-            if nums[i] not in hashmap:
-                hashmap[nums[i]] = 1 + hashmap.get(nums[i], 0)
-            else:
+            if nums[i] in hashmap:
                 return True
+            hashmap[nums[i]] = 1 + hashmap.get(nums[i], 0)
         return False
-        
