@@ -8,18 +8,14 @@ class Solution(object):
         l = 0
         r = len(numbers) - 1
 
-        res = []
-
         while l < r:
-            if numbers[l] + numbers[r] > target:
-                r = r - 1
-            if numbers[l] + numbers[r] < target:
-                l = l + 1
-            if numbers[l] + numbers[r] == target:
-                return [l+1, r+1]
+            summ = numbers[l] + numbers[r]
 
-        return
+            if summ > target:
+                r = r-1
+            elif summ < target:
+                l = l+1
+            else:
+                return [l+1,r+1]
+        return []
             
-
-
-        
