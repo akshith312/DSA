@@ -7,16 +7,18 @@ class Solution(object):
         """
         count = {}
 
-        for i in range(len(nums)):
-            count[nums[i]] = 1 + count.get(nums[i], 0)
+        freq = [[] for i in range(len(nums) + 1)]
+
+        for n in nums:
+            count[n] = 1 + count.get(n,0)
+        
+        for n,c in count.items():
+            freq[c].append(n)
         
         res = []
-        for i,n in count.items():
-            res.append([n,i])
-        res = sorted(res)
-        ans = []
 
-        while len(ans) < k:
-            ans.append(res.pop()[1])
-        return ans
-        
+        for i in range(len(freq) - 1, 0, -1):
+            for n in freq[i]:
+                res.append(n)
+                if len(res) == k:
+                    return res
